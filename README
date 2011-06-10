@@ -1,0 +1,14 @@
+CONCEPT TAG GENERATOR
+=====================
+
+
+INSTALLATION PREREQUISITES :
+----------------------------
+* install conceptnet
+* install divisi2
+* install nltk with "book" and "stopwords" packages
+* make sure that the loacation of the ConceptNet.db is the same with the "concepttag/settings.py"
+
+RUNNING :
+---------
+"http://127.0.0.1:8000/app_generator"

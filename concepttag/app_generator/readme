@@ -1,7 +1,0 @@
-follow steps
-1. install conceptnet
-2. install divisi2
-3. install nltk
-    3.1 python -> import nltk -> nltk.download()  ; download "book" and "stopwords"
-4. install django
-5. make sure that the loacation of the ConceptNet.db is the same with the "concepttag/settings.py"
