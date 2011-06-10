@@ -5,6 +5,7 @@ from django.conf.urls.defaults import *
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    (r'^app_generator/$', 'concepttag.app_generator.views.TagRecommendation'),
     # Example:
     # (r'^concepttag/', include('concepttag.foo.urls')),
 
