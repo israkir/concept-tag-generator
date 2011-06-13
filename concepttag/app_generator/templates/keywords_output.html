@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-tw">
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>Advanced AI: Final Project</title>
+<!--    <script type="text/javascript" 
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+    /*<![CDATA[*/
+    jQuery(function() {
+        var form = jQuery("#keywordsform");
+        form.submit(function(e) {
+            jQuery("#sendbutton").attr('disabled', true)
+            jQuery("#sendwrapper").prepend('<span>Sending message, please wait... </span>')
+            jQuery("#ajaxwrapper").load(
+                form.attr('action') + ' #ajaxwrapper',
+                form.serializeArray(),
+                function(responseText, responseStatus) {
+                    jQuery("#sendbutton").attr('disabled', false)
+                }
+            );
+            e.preventDefault(); 
+        });
+    });
+    /*]]>*/
+    </script>-->
+    <script>
+        function uncheckTag()
+        {
+            var obj=document.getElementsByName("checkbox");
+            var from=document.getElementsByName("keywordsFeedback");
+            var len = obj.length;
+            var checked = false;
+
+            for (i = 0; i < len; i++)
+            {
+               if (obj[i].checked == false)
+               {
+                    //obj[i].style.visibility = "hidden";
+                    obj[i].value = "none";
+               }
+            }
+            //alert(checked);
+            document.keywordsFeedback.submit();
+        }
+    </script>
+</head>
+<body bgcolor="#00FFFF">
+    <form method="POST" action="/app_generator/keywordsFeedback/" name="keywordsFeedback" id="keywordsFeedback">
+        {{ key_title }}&nbsp;
+            {% for key in key_list %}
+                <input type="checkbox" name="checkbox" id="{{ key }}" value="{{ key }}" checked onclick="uncheckTag();">{{ key }}&nbsp;
+            {% endfor %}
+    </form>
+</body>
+</html>
+

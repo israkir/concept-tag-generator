@@ -1,8 +1,8 @@
-# -*- coding: cp950 -*-
+# -*- coding: utf-8 -*-
 from conceptnet.models import *
-from simplenlp import get_nl    #輸入自然語言處理工具
+from simplenlp import get_nl    # natural language tool
 import os
-import nltk                     #輸入自然語言處理工具
+import nltk                     # natural language tool
 
 def parser(txt):
     # append the result into "output" and return it
@@ -10,14 +10,17 @@ def parser(txt):
     output = []
     en_nl = get_nl('en')            # specify language
     #en = Language.get('en')         # specify language
-    if os.name == 'nt':
-        openfile = open('C:\\博士班一般\\06_課程\\0992_高等人工智慧\\07_ConceptNetTutorial\\in.txt', 'r')
-    if os.name == 'posix':
-        import sys
-        sys.path.append('/home/chsiensu/.conceptnet/nltk-2.0.1rc1')
+
+    # load articles from file
+    #if os.name == 'nt':
+    #    openfile = open('./in.txt', 'r')
+    #if os.name == 'posix':
+    #    import sys
+    #    sys.path.append('/home/chsiensu/.conceptnet/nltk-2.0.1rc1')
     #    openfile = open('/home/chsiensu/.conceptnet/intext.txt', 'r')
     
     #raw = openfile.read()
+    
     # input text from the web-page
     raw = txt
 
@@ -46,7 +49,6 @@ def parser(txt):
     from nltk.collocations import *
     bigram_measures = nltk.collocations.BigramAssocMeasures()
     ##finder = BigramCollocationFinder.from_words(
-    ##   nltk.corpus.genesis.words('C:\\博士班一般\\06_課程\\0992_高等人工智慧\\07_ConceptNetTutorial\\in.txt'))
     finder = BigramCollocationFinder.from_words(text)
     # only bigrams that appear 2+ times
     A = finder.apply_freq_filter(2)
@@ -80,6 +82,7 @@ def parser(txt):
     top20 = sim.left_category(newCategory).top_items(n=20)
     for x in top20:
         print x
+        output.append(x[0])
 
     print '===>step 7: Frequency distribution'
     from nltk.book import *
@@ -89,7 +92,7 @@ def parser(txt):
     print vocabulary1
 
     print '===>step 8: Output file'
-    output = ['keyword1','keyword2']
+    #output = ['keyword1','keyword2','ttt','test','teacher']
     print output
     return output
 
