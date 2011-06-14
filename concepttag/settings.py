@@ -1,3 +1,5 @@
+import os
+
 # Django settings for concepttag project.
 
 DEBUG = True
@@ -85,12 +87,12 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'concepttag.urls'
-import os.path
+
 TEMPLATE_DIRS = (
-    os.path.join(os.path.basename(__file__), 'app_generator/templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.path.dirname(__file__), 'templates'),
 )
 
 INSTALLED_APPS = (

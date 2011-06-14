@@ -1,9 +1,7 @@
-# Create your views here.
 from django.template.loader import get_template
 from django.template import Template, Context
 from django.http import HttpResponse
 import ConceptTagGenerator
-#import tag
 
 def mainPage(request):
     Key_title = ""
@@ -28,13 +26,13 @@ def keywordsOutput(request):
 def keywordsGenerator(request):
     Result_list = ""
     Text = ""
-    Key_title = "Keywords: no recommendation"
+    Key_title = "Generated Tags: no recommendation!"
     if request.POST.has_key('Text'):
         Text = request.POST['Text']
         if len(Text) != 0:
             Result_list = ConceptTagGenerator.parser(Text)
             #Result_list = tag.parser(Text)
-            Key_title = "Keywords: "
+            Key_title = "Generated Tags: "
         else:
             print 'no any words in the text!'
     else:
@@ -46,7 +44,7 @@ def keywordsGenerator(request):
     return HttpResponse(html)
 
 def keywordsFeedback(request):
-    Key_title = "Keywords: "
+    Key_title = "Generated Tags: "
     input_key_list = []
     output_key_list = []
 
