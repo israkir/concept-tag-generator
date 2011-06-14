@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AAI Team 1's Concept Tag Generator</title>
+<style type="text/css">
+body {
+	font-size: 67.5%;
+	font-family: Tahoma, sans-serif;
+}
+
+p, li {
+	font-size: 1.4em;
+}
+
+h1 {
+	font-size: 2.1em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+</style>
+<script>
+function uncheckTag()
+{
+    var obj=document.getElementsByName("checkbox");
+    var from=document.getElementsByName("keywordsFeedback");
+    var len = obj.length;
+    var checked = false;
+
+    for (i = 0; i < len; i++)
+    {
+       if (obj[i].checked == false)
+       {
+            obj[i].value = "none";
+       }
+    }
+    document.keywordsFeedback.submit();
+}
+</script>
+</head>
+<body bgcolor="#F1F0FF">
+    <form method="POST" action="/keywordsFeedback/" name="keywordsFeedback" id="keywordsFeedback">
+        <h4><p align="center">{{ key_title }}</p></h4>
+        <p align="center">
+        {% for key in key_list %}
+            <input type="checkbox" name="checkbox" id="{{ key }}" value="{{ key }}" checked onclick="uncheckTag();">{{ key }}&nbsp;
+        {% endfor %}
+        </p>
+    </form>
+</body>
+</html>
+
