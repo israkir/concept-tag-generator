@@ -2,8 +2,8 @@
 from django.template.loader import get_template
 from django.template import Template, Context
 from django.http import HttpResponse
-#from forms import ArticleForm
 import ConceptTagGenerator
+#import tag
 
 def mainPage(request):
     Key_title = ""
@@ -28,11 +28,12 @@ def keywordsOutput(request):
 def keywordsGenerator(request):
     Result_list = ""
     Text = ""
-    Key_title = ""
+    Key_title = "Keywords: no recommendation"
     if request.POST.has_key('Text'):
         Text = request.POST['Text']
         if len(Text) != 0:
             Result_list = ConceptTagGenerator.parser(Text)
+            #Result_list = tag.parser(Text)
             Key_title = "Keywords: "
         else:
             print 'no any words in the text!'
