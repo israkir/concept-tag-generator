@@ -7,6 +7,7 @@ import divisi2                          # import divisi2
 import nltk                             # import natural language toolkit(nltk)
 import os                               # for confirming operating system name
 import time                             # for calculate the execution time
+import math                             # import mathematical function
 
 def parser(txt):
     # append the result into "output" and return it
@@ -99,7 +100,8 @@ def parser(txt):
     
         tags = []
         count = 0
-        tagDepth = 8
+        tagDepth = math.floor(math.log(len(tokenizedRaw))+2)
+        #tagDepth = 8
         print '=> (token, normalized token, tag):'
         for tag in posTag:
             '''
@@ -110,7 +112,8 @@ def parser(txt):
             '''
             if tag[1] in remainTags and len(tag[0]) > 2:
                 try:
-                    wnTag = wn.synset(tag[0]+'.n.01')
+                    #wnTag = wn.synset(tag[0]+'.n.01')
+                    wnTag = wn.synset(en_nl.word_split(tag[0])[0].lower()+'.n.01')
                     if len(wnTag.hypernym_distances()) > tagDepth:
                         count += 1
                         stemmedTag = en_nl.word_split(tag[0])
